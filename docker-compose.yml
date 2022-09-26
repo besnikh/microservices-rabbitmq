@@ -11,6 +11,26 @@ services:
       - 5672:5672
     networks:
       - dropin
+  webservice:
+    networks:
+      - dropin
+    healthcheck:
+      test: curl --fail http://localhost:3000 || exit 1
+      interval: 1m
+      timeout: 30s
+      retries: 5
+      start_period: 10s
+    container_name: webservice
+    build:
+      context: ./webservice
+      # dockerfile: ./Dockerfile
+      args:
+        - SERVICENAME=BESNIK
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./webservice:/app
+    command: sh -c './wait-for-it.sh rabbitmq:5672 --timeout=50 -- npm start'
 networks:
   dropin:
     driver: bridge
