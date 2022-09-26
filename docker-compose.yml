@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  rabbitmq:
+    image: rabbitmq:3.9.13-management-alpine
+    container_name: 'rabbitmq'
+    environment:
+      - "RABBITMQ_DEFAULT_PASS=guest"
+      - "RABBITMQ_DEFAULT_USER=guest"
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - dropin
+networks:
+  dropin:
+    driver: bridge
