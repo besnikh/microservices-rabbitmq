@@ -5,4 +5,4 @@
 - Rabbitmq will be used as pubsub
 
 
-## docker-compose up --build 
+## docker-compose up
