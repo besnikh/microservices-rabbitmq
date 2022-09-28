@@ -1,19 +1,19 @@
-FROM node:14-alpine as base
+FROM node:14-alpine
 
 RUN apk add curl
 RUN apk update && apk add bash
 
-RUN npm i npm@latest -g
-
-RUN mkdir app && chown node:node app
+RUN mkdir app
 WORKDIR /app
 
-USER node
-COPY --chown=node:node package.json package-lock.json* wait-for-it.sh ./
+RUN npm i typescript -g 
 
-RUN npm install --no-optional && npm cache clean --force
-ENV PATH app/node_modules/.bin:$PATH
+COPY package*.json tsconfig.json docker-entry.sh wait-for-it.sh ./
 
-RUN chmod +x ./wait-for-it.sh
+RUN npm i
+
+COPY . .
 
 EXPOSE 3001
+ENTRYPOINT [ "sh", "docker-entry.sh" ]
+CMD [ "npm", "start" ]
