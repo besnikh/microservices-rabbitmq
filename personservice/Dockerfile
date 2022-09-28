@@ -3,8 +3,8 @@ FROM node:14-alpine
 RUN apk add curl
 RUN apk update && apk add bash
 
-RUN mkdir app
-WORKDIR /app
+RUN mkdir personservice
+WORKDIR /personservice
 
 RUN npm i typescript -g 
 
