@@ -4,7 +4,7 @@ RUN apk add curl
 RUN apk update && apk add bash
 
 RUN npm i npm@latest -g
-# RUN npm i typescript -g 
+RUN npm i typescript -g 
 
 RUN mkdir app && chown -R node:node /app
 # RUN mkdir app
