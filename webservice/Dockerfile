@@ -6,15 +6,14 @@ RUN apk update && apk add bash
 RUN mkdir app
 WORKDIR /app
 
-COPY package.json ./
-COPY tsconfig.json ./
-COPY docker-entry.sh ./
-COPY wait-for-it.sh ./
+COPY package.json ./app
+COPY tsconfig.json ./app
+COPY docker-entry.sh ./app
+COPY wait-for-it.sh ./app
 
 RUN npm install
 
 COPY . /app
-
 
 RUN npm i typescript -g 
 
