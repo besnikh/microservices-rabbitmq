@@ -19,3 +19,11 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: build and Run docker-compose
         run: docker-compose up --build 
+      - name: 'Test the GET response'
+        uses: cygnetdigital/wait_for_response@v2.0.0
+        with:
+          url: 'http://localhost:3000/hello'
+          responseCode: '200,500'
+          timeout: 2000
+          interval: 500
+        
