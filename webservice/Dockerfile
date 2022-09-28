@@ -18,7 +18,7 @@ COPY --chown=node:node package.json package-lock.json wait-for-it.sh docker-entr
 # COPY package.json wait-for-it.sh ./
 RUN npm install && npm cache clean --force
 
-COPY . /app/
+COPY --chown=node:node . /app/
 
 # RUN chmod +x app/wait-for-it.sh ./docker-entry.sh
 
