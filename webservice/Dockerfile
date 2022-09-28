@@ -11,30 +11,12 @@ COPY tsconfig.json ./
 COPY docker-entry.sh ./
 COPY wait-for-it.sh ./
 
+RUN npm install
+
 COPY . /app
 
-# RUN npm i npm@latest -g
+
 RUN npm i typescript -g 
-
-RUN npm install && npm i typescript && npm cache clean --force
-
-
-# RUN npm i npm@latest -g
-# RUN npm i typescript -g 
-
-# RUN mkdir app && chown -R node:node /app
-# RUN mkdir app
-# RUN chmod +x /wait-for-it.sh
-# RUN mkdir app
-# WORKDIR /app
-
-# USER node
-
-# COPY --chown=node:node package.json package-lock.json wait-for-it.sh docker-entry.sh ./
-
-# RUN npm install && npm cache clean --force
-
-# RUN chown -R node:node /app/dist/
 
 EXPOSE 3000
 ENTRYPOINT [ "sh", "docker-entry.sh" ]
