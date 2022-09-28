@@ -16,7 +16,7 @@ USER node
 COPY --chown=node:node package.json package-lock.json* wait-for-it.sh docker-entry.sh /app/
 # COPY package.json wait-for-it.sh ./
 RUN npm install --no-optional && npm cache clean --force
-RUN npm install -g typescript
+RUN npm install typescript
 
 COPY . /app/
 
