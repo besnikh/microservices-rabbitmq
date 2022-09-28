@@ -32,53 +32,56 @@ services:
     environment:
       - REMOTE_HOST=rabbitmq
       - REMOTE_PORT=5672
-    # command: sh -c './wait-for-it.sh rabbitmq:5672 --timeout=50 -- npm start'
-  personservice:
-    depends_on:
-      - rabbitmq
-      - webservice
-    networks:
-      - dropin
-    healthcheck:
-      test: curl --fail http://localhost:3001 || exit 1
-      interval: 1m
-      timeout: 30s
-      retries: 5
-      start_period: 10s
-    container_name: personservice
-    build:
-      context: ./personservice
-      # dockerfile: ./Dockerfile
-    ports:
-      - "3001:3001"
-    volumes:
-      - ./personservice:/app
-    command: sh -c './wait-for-it.sh rabbitmq:5672 --timeout=60 -- npm start'
-    environment:
-      - SERVICENAME=BESNIK
-  personservice2:
-    depends_on:
-      - rabbitmq
-      - webservice
-    networks:
-      - dropin
-    healthcheck:
-      test: curl --fail http://localhost:3001 || exit 1
-      interval: 1m
-      timeout: 30s
-      retries: 5
-      start_period: 10s
-    container_name: personservice2
-    build:
-      context: ./personservice
-      # dockerfile: ./Dockerfile
-    ports:
-      - "3002:3002"
-    volumes:
-      - ./personservice:/app
-    command: sh -c './wait-for-it.sh rabbitmq:5672 --timeout=60 -- npm start'
-    environment:
-      - SERVICENAME=DROPIN
 networks:
-  dropin:
+  dropin: 
     driver: bridge
+    # command: sh -c './wait-for-it.sh rabbitmq:5672 --timeout=50 -- npm start'
+  # personservice:
+  #   depends_on:
+  #     - rabbitmq
+  #     - webservice
+  #   networks:
+  #     - dropin
+  #   healthcheck:
+  #     test: curl --fail http://localhost:3001 || exit 1
+  #     interval: 1m
+  #     timeout: 30s
+  #     retries: 5
+  #     start_period: 10s
+  #   container_name: personservice
+  #   build:
+  #     context: ./personservice
+  #     # dockerfile: ./Dockerfile
+  #   ports:
+  #     - "3001:3001"
+  #   volumes:
+  #     - ./personservice:/app
+  #   command: sh -c './wait-for-it.sh rabbitmq:5672 --timeout=60 -- npm start'
+  #   environment:
+  #     - SERVICENAME=BESNIK
+  # personservice2:
+  #   depends_on:
+  #     - rabbitmq
+  #     - webservice
+  #   networks:
+  #     - dropin
+  #   healthcheck:
+  #     test: curl --fail http://localhost:3001 || exit 1
+  #     interval: 1m
+  #     timeout: 30s
+  #     retries: 5
+  #     start_period: 10s
+  #   container_name: personservice2
+  #   build:
+  #     context: ./personservice
+  #     # dockerfile: ./Dockerfile
+  #   ports:
+  #     - "3002:3002"
+  #   volumes:
+  #     - ./personservice:/app
+  #   command: sh -c './wait-for-it.sh rabbitmq:5672 --timeout=60 -- npm start'
+  #   environment:
+  #     - SERVICENAME=DROPIN
+# networks:
+#   dropin:
+#     driver: bridge
