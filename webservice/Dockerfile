@@ -4,6 +4,7 @@ RUN apk add curl
 RUN apk update && apk add bash
 
 RUN npm i npm@latest -g
+RUN npm i typescript -g 
 
 RUN mkdir app && chown node:node app
 # RUN mkdir app
@@ -16,7 +17,6 @@ USER node
 COPY --chown=node:node package.json package-lock.json wait-for-it.sh docker-entry.sh /app/
 # COPY package.json wait-for-it.sh ./
 RUN npm install && npm cache clean --force
-RUN npm install typescript
 
 COPY . /app/
 
