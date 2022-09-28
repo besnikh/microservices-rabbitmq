@@ -15,5 +15,6 @@ RUN npm i
 COPY . .
 
 EXPOSE 3000
-ENTRYPOINT [ "sh", "docker-entry.sh" ]
+# ENTRYPOINT [ "sh", "docker-entry.sh" ]
+ENTRYPOINT [ "./docker-entry.sh" ]
 CMD [ "npm", "start" ]
