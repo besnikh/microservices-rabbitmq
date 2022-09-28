@@ -6,9 +6,11 @@ RUN apk update && apk add bash
 RUN mkdir personservice
 WORKDIR /personservice
 
-RUN npm i typescript -g 
+RUN npm i typescript -g
 
 COPY package*.json tsconfig.json docker-entry.sh wait-for-it.sh ./
+
+RUN chmod +x ./wait-for-it.sh
 
 RUN npm i
 
