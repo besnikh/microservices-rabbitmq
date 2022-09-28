@@ -26,8 +26,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    volumes:
-      - ./webservice:/app/
+    # volumes:
+      # - ./webservice:/app/
       # - webservice:./webservice://app
       # - volumeweb:/app
     environment:
