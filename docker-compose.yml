@@ -29,7 +29,10 @@ services:
       - "3000:3000"
     volumes:
       - ./webservice:/app
-    command: sh -c './wait-for-it.sh rabbitmq:5672 --timeout=50 -- npm start'
+    environment:
+      - REMOTE_HOST=rabbitmq
+      - REMOTE_PORT=5672
+    # command: sh -c './wait-for-it.sh rabbitmq:5672 --timeout=50 -- npm start'
   personservice:
     depends_on:
       - rabbitmq
