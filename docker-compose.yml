@@ -27,8 +27,8 @@ services:
         - SERVICENAME=BESNIK
     ports:
       - "3000:3000"
-    # volumes:
-      # - ./webservice:/app
+    volumes:
+      - ./webservice:/app
     environment:
       - REMOTE_HOST=rabbitmq
       - REMOTE_PORT=5672
