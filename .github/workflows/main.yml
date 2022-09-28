@@ -18,11 +18,13 @@ jobs:
         run: chmod +x ./personservice/wait-for-it.sh
       - name: run docker compose with build flag
         run: docker-compose up --build 
-      - name: 'Test the GET response'
-        uses: cygnetdigital/wait_for_response@v2.0.0
-        with:
-          url: 'webservice:3000/hello'
-          responseCode: '200'
-          timeout: 500
-          interval: 100
+      - name: Curl localhost
+        run: curl http://localhost:3000/hello -1
+      # - name: 'Test the GET response'
+      #   uses: cygnetdigital/wait_for_response@v2.0.0
+      #   with:
+      #     url: 'webservice:3000/hello'
+      #     responseCode: '200'
+      #     timeout: 500
+      #     interval: 100
         
