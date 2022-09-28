@@ -14,11 +14,11 @@ WORKDIR /app
 
 USER node
 
-COPY --chown=node:node package.json package-lock.json wait-for-it.sh docker-entry.sh /app/
+COPY --chown=node:node package.json package-lock.json wait-for-it.sh docker-entry.sh ./
 
 RUN npm install && npm cache clean --force
 
-RUN chown -R node:node /app/node_modules
+RUN chown -R node:node /app/dist/
 
 EXPOSE 3000
 ENTRYPOINT [ "sh", "docker-entry.sh" ]
