@@ -23,15 +23,18 @@ services:
     container_name: webservice
     build:
       context: ./webservice
-      args:
-        - SERVICENAME=BESNIK
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     volumes:
-      - ./webservice:/app
+      - ./webservice:/app/
+      # - webservice:./webservice://app
+      # - volumeweb:/app
     environment:
       - REMOTE_HOST=rabbitmq
       - REMOTE_PORT=5672
+# volumes:
+#   volumeweb:
 networks:
   dropin: 
     driver: bridge
