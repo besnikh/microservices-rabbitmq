@@ -8,10 +8,7 @@ WORKDIR /app
 
 RUN npm i typescript -g 
 
-COPY package*.json ./
-COPY tsconfig.json ./
-COPY docker-entry.sh ./
-COPY wait-for-it.sh ./
+COPY package*.json tsconfig.json docker-entry.sh wait-for-it.sh ./
 
 RUN npm i
 
