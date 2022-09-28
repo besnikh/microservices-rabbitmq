@@ -13,7 +13,7 @@ COPY wait-for-it.sh ./
 
 COPY . /app
 
-RUN npm install && npm cache clean --force
+RUN npm install && npm i typescript && npm cache clean --force
 
 
 # RUN npm i npm@latest -g
