@@ -14,6 +14,6 @@ COPY --chown=node:node package.json package-lock.json* wait-for-it.sh ./
 RUN npm install --no-optional && npm cache clean --force
 ENV PATH app/node_modules/.bin:$PATH
 
-RUN chmod +x ./wait-for-it.sh
+RUN chmod +x wait-for-it.sh
 
 EXPOSE 3000
