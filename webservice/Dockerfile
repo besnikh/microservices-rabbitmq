@@ -6,21 +6,23 @@ RUN apk update && apk add bash
 RUN npm i npm@latest -g
 RUN npm i typescript -g 
 
-RUN mkdir app && chown node:node app
+RUN mkdir app && chown -R node:node /app
 # RUN mkdir app
 # RUN chmod +x /wait-for-it.sh
 # RUN mkdir app
 WORKDIR /app
 
-USER node
-
 COPY --chown=node:node package.json package-lock.json wait-for-it.sh docker-entry.sh /app/
-# COPY package.json wait-for-it.sh ./
-RUN npm install && npm cache clean --force
 
 COPY --chown=node:node . /app/
 
-RUN chown -R node /app/
+USER node
+
+RUN npm install && npm cache clean --force
+
+# COPY package.json wait-for-it.sh ./
+
+# RUN chown -R node .
 
 # RUN chmod +x app/wait-for-it.sh ./docker-entry.sh
 
