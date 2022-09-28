@@ -21,7 +21,7 @@ jobs:
       - name: 'Test the GET response'
         uses: cygnetdigital/wait_for_response@v2.0.0
         with:
-          url: 'http://localhost:3000/hello'
+          url: 'http://webservice:3000/hello'
           responseCode: '200'
           timeout: 500
           interval: 100
