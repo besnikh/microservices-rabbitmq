@@ -3,20 +3,33 @@ FROM node:14-alpine
 RUN apk add curl
 RUN apk update && apk add bash
 
-RUN npm i npm@latest -g
-RUN npm i typescript -g 
+RUN mkdir app
+WORKDIR /app
 
-RUN mkdir app && chown -R node:node /app
+COPY package.json ./
+COPY tsconfig.json ./
+COPY docker-entry.sh ./
+COPY wait-for-it.sh ./
+
+COPY . /app
+
+RUN npm install && npm cache clean --force
+
+
+# RUN npm i npm@latest -g
+# RUN npm i typescript -g 
+
+# RUN mkdir app && chown -R node:node /app
 # RUN mkdir app
 # RUN chmod +x /wait-for-it.sh
 # RUN mkdir app
-WORKDIR /app
+# WORKDIR /app
 
-USER node
+# USER node
 
-COPY --chown=node:node package.json package-lock.json wait-for-it.sh docker-entry.sh ./
+# COPY --chown=node:node package.json package-lock.json wait-for-it.sh docker-entry.sh ./
 
-RUN npm install && npm cache clean --force
+# RUN npm install && npm cache clean --force
 
 # RUN chown -R node:node /app/dist/
 
