@@ -18,6 +18,8 @@ COPY --chown=node:node package.json package-lock.json wait-for-it.sh docker-entr
 
 RUN npm install && npm cache clean --force
 
+RUN chown -R node:node /app/node_modules
+
 EXPOSE 3000
 ENTRYPOINT [ "sh", "docker-entry.sh" ]
 CMD [ "npm", "start" ]
