@@ -17,7 +17,7 @@ jobs:
       - name: Run chmod for Personservice
         run: chmod +x ./personservice/wait-for-it.sh
       - name: run docker compose with build flag
-        run: docker-compose up--build 
+        run: docker-compose up --build 
       - name: 'Test the GET response'
         uses: cygnetdigital/wait_for_response@v2.0.0
         with:
