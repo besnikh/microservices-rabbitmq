@@ -20,7 +20,7 @@ RUN chmod +x ./wait-for-it.sh ./docker-entry.sh
 
 # ENV PATH app/node_modules/.bin:$PATH
 
-RUN chmod +x ./
+# RUN chmod +x ./
 
 EXPOSE 3000
 
