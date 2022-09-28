@@ -20,6 +20,8 @@ RUN npm install && npm cache clean --force
 
 COPY --chown=node:node . /app/
 
+RUN chown -R node /app/
+
 # RUN chmod +x app/wait-for-it.sh ./docker-entry.sh
 
 # RUN sudo chmod +x docker-entry.sh
